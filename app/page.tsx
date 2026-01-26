@@ -160,7 +160,14 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square bg-white/10 rounded-2xl" />
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <Image
+                  src="/pho-tai.png"
+                  alt="Pho"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
                 <p className="text-4xl font-bold text-brand">12+</p>
                 <p className="text-stone-600">Hours of slow-simmered broth</p>
