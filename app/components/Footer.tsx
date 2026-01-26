@@ -73,10 +73,10 @@ export default function Footer() {
               About
             </Link>
             <Link
-              href="#contact"
+              href="/faq"
               className="text-stone-500 hover:text-white transition-colors text-sm"
             >
-              Contact
+              FAQ
             </Link>
           </div>
         </div>

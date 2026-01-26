@@ -50,10 +50,10 @@ export default function Header() {
               About
             </Link>
             <Link
-              href="#contact"
+              href="/faq"
               className="text-stone-700 hover:text-brand transition-colors font-medium"
             >
-              Contact
+              FAQ
             </Link>
             <a
               href="tel:+15035551234"
@@ -107,18 +107,18 @@ export default function Header() {
               Menu
             </Link>
             <Link
-              href="#about"
+              href="/about"
               className="text-stone-700 hover:text-brand transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
             <Link
-              href="#contact"
+              href="/faq"
               className="text-stone-700 hover:text-brand transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              FAQ
             </Link>
             <a
               href="tel:+15035551234"
