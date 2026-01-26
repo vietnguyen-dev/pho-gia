@@ -1,3 +1,8 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
 const menuData = {
   pho: {
     title: "Pho",
@@ -70,9 +75,33 @@ const menuData = {
   },
 };
 
-import Image from "next/image";
+const filters = [
+  { key: "all", label: "All" },
+  { key: "pho", label: "Pho" },
+  { key: "noodles", label: "Noodles" },
+  { key: "rice", label: "Rice" },
+  { key: "vermicelli", label: "Vermicelli" },
+  { key: "banh", label: "Banh Mi" },
+  { key: "drinks", label: "Drinks" },
+];
 
 export default function MenuPage() {
+  const [search, setSearch] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredMenu = Object.entries(menuData)
+    .filter(([key]) => activeFilter === "all" || key === activeFilter)
+    .map(([key, category]) => ({
+      key,
+      ...category,
+      items: category.items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()) ||
+          item.desc.toLowerCase().includes(search.toLowerCase())
+      ),
+    }))
+    .filter((category) => category.items.length > 0);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero with Image */}
@@ -95,37 +124,114 @@ export default function MenuPage() {
         </div>
       </section>
 
+      {/* Search & Filters */}
+      <section className="sticky top-20 z-40 bg-white border-b border-stone-200 py-4">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Search Bar */}
+          <div className="relative mb-4">
+            <svg
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search dishes..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-12 pr-12 py-3 border border-stone-200 rounded-full focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 hover:text-stone-600 transition-colors"
+                aria-label="Clear search"
+              >
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Filter Buttons */}
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {filters.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  activeFilter === filter.key
+                    ? "bg-brand text-white"
+                    : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Menu Sections */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-6">
-          {Object.entries(menuData).map(([key, category]) => (
-            <div key={key} className="mb-16">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-stone-900 mb-2">
-                  {category.title}
-                </h2>
-                <p className="text-stone-500">{category.description}</p>
-                <div className="w-16 h-1 bg-brand mt-4" />
-              </div>
+          {filteredMenu.length > 0 ? (
+            filteredMenu.map((category) => (
+              <div key={category.key} className="mb-16">
+                <div className="mb-8">
+                  <h2 className="text-3xl font-bold text-stone-900 mb-2">
+                    {category.title}
+                  </h2>
+                  <p className="text-stone-500">{category.description}</p>
+                  <div className="w-16 h-1 bg-brand mt-4" />
+                </div>
 
-              <div className="space-y-4">
-                {category.items.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-start py-4 border-b border-stone-100 last:border-0"
-                  >
-                    <div className="flex-1 pr-4">
-                      <h3 className="font-semibold text-stone-900">
-                        {item.name}
-                      </h3>
-                      <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
+                <div className="space-y-4">
+                  {category.items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-start py-4 border-b border-stone-100 last:border-0"
+                    >
+                      <div className="flex-1 pr-4">
+                        <h3 className="font-semibold text-stone-900">
+                          {item.name}
+                        </h3>
+                        <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
+                      </div>
+                      <p className="text-brand font-semibold">${item.price}</p>
                     </div>
-                    <p className="text-brand font-semibold">${item.price}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+            ))
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-stone-500 text-lg">No dishes found matching your search.</p>
+              <button
+                onClick={() => {
+                  setSearch("");
+                  setActiveFilter("all");
+                }}
+                className="mt-4 text-brand font-medium hover:underline"
+              >
+                Clear filters
+              </button>
             </div>
-          ))}
+          )}
 
           {/* Note */}
           <div className="bg-stone-50 rounded-2xl p-8 text-center">

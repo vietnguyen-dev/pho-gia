@@ -53,12 +53,12 @@ export default function Home() {
             >
               View Our Menu
             </Link>
-            <a
-              href="#about"
+            <Link
+              href="/about"
               className="border-2 border-white/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-colors"
             >
               Our Story
-            </a>
+            </Link>
           </div>
         </div>
 

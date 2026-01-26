@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Pho Gia Milwaukie | Authentic Vietnamese Cuisine",
   description:
     "Experience authentic Vietnamese pho and cuisine at Pho Gia Milwaukie. Fresh ingredients, traditional recipes, and a warm atmosphere.",
+  icons: {
+    icon: "/pho-gia-icon.jpeg",
+  },
 };
 
 export default function RootLayout({

@@ -67,7 +67,7 @@ export default function Footer() {
               Menu
             </Link>
             <Link
-              href="#about"
+              href="/about"
               className="text-stone-500 hover:text-white transition-colors text-sm"
             >
               About

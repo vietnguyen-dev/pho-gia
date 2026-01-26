@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -10,13 +11,22 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
       <nav className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex flex-col">
-            <span className="text-2xl font-bold text-brand tracking-tight">
-              Pho Gia
-            </span>
-            <span className="text-xs text-stone-500 tracking-widest uppercase">
-              Milwaukie
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/pho-gia-logo.png"
+              alt="Pho Gia Logo"
+              width={48}
+              height={48}
+              className="w-12 h-12 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-brand tracking-tight">
+                Pho Gia
+              </span>
+              <span className="text-xs text-stone-500 tracking-widest uppercase">
+                Milwaukie
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,7 +44,7 @@ export default function Header() {
               Menu
             </Link>
             <Link
-              href="#about"
+              href="/about"
               className="text-stone-700 hover:text-brand transition-colors font-medium"
             >
               About
