@@ -33,15 +33,15 @@ export default function AboutPage() {
             <p className="text-stone-600 leading-relaxed mb-6">
               Pho Gia began as a family dream, born from the memories of bustling
               street corners in Saigon where the aroma of slow-simmered broth filled
-              the morning air. When the Nguyen family arrived in Oregon in 1985, they
-              brought with them more than just recipes—they carried the soul of
-              Vietnamese cuisine.
+              the morning air. When the Nguyen family arrived in Oregon in the early
+              1990s, they brought with them more than just recipes—they carried the
+              soul of Vietnamese cuisine.
             </p>
             <p className="text-stone-600 leading-relaxed mb-6">
               Great pho requires patience: bones roasted until golden, spices
-              toasted to release their oils, and broth simmered for no less than
-              12 hours. These traditions, passed down through generations, remain
-              at the heart of everything we do.
+              toasted to release their oils, and broth simmered for 3 full days.
+              These traditions, passed down through generations, remain at the
+              heart of everything we do.
             </p>
             <p className="text-stone-600 leading-relaxed mb-6">
               Our Milwaukie location is a proud extension of our sister
@@ -112,9 +112,9 @@ export default function AboutPage() {
                 The Secret is in the Broth
               </h2>
               <p className="text-stone-600 leading-relaxed mb-6">
-                Our pho broth is the foundation of everything we do. Each morning
-                at 4 AM, our kitchen comes alive as we begin the 12-hour process
-                of creating our signature broth.
+                Our pho broth is the foundation of everything we do. Our kitchen
+                runs around the clock as we tend to broth that simmers for 3 full
+                days to create the deepest, richest flavor possible.
               </p>
               <p className="text-stone-600 leading-relaxed mb-6">
                 We start with beef bones that are roasted until caramelized, then
@@ -123,9 +123,9 @@ export default function AboutPage() {
                 oils before joining the pot.
               </p>
               <p className="text-stone-600 leading-relaxed">
-                The broth simmers low and slow, never boiling, developing layers of
-                flavor that simply cannot be rushed. This dedication to craft is
-                what makes every bowl of Pho Gia special.
+                Over 3 days the broth simmers low and slow, never boiling,
+                developing layers of flavor that simply cannot be rushed. This
+                dedication to craft is what makes every bowl of Pho Gia special.
               </p>
             </div>
             <div className="relative">
@@ -138,8 +138,8 @@ export default function AboutPage() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
-                <p className="text-4xl font-bold text-[#6a3940]">4 AM</p>
-                <p className="text-stone-600">When our kitchen starts each day</p>
+                <p className="text-4xl font-bold text-[#6a3940]">3 Days</p>
+                <p className="text-stone-600">Of slow-simmered broth</p>
               </div>
             </div>
           </div>

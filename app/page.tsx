@@ -66,15 +66,18 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <a
+          href="#featured"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+        >
           <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
             <div className="w-1 h-3 bg-white/50 rounded-full" />
           </div>
-        </div>
+        </a>
       </section>
 
       {/* Featured Dishes */}
-      <section className="py-24 bg-white">
+      <section id="featured" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-brand font-medium tracking-widest uppercase mb-2">
@@ -149,9 +152,9 @@ export default function Home() {
                 </p>
                 <p>
                   We believe in using only the freshest ingredients. Our broth
-                  is prepared daily, simmering for over 12 hours to achieve that
-                  perfect depth of flavor. Every herb, every spice, every
-                  ingredient is carefully selected.
+                  simmers for 3 full days to achieve that perfect depth of
+                  flavor. Every herb, every spice, every ingredient is carefully
+                  selected.
                 </p>
                 <p>
                   Located in the heart of Milwaukie, we invite you to experience
@@ -172,8 +175,8 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
-                <p className="text-4xl font-bold text-brand">12+</p>
-                <p className="text-stone-600">Hours of slow-simmered broth</p>
+                <p className="text-4xl font-bold text-brand">3 Days</p>
+                <p className="text-stone-600">Of slow-simmered broth</p>
               </div>
             </div>
           </div>
