@@ -6,16 +6,19 @@ const featuredDishes = [
     name: "Pho Tai",
     description: "Rice noodle soup with rare beef slices in aromatic broth",
     price: "$14.95",
+    icon: "🍜",
   },
   {
-    name: "Bun Bo Hue",
-    description: "Spicy beef noodle soup with lemongrass and shrimp paste",
-    price: "$15.95",
+    name: "Bun Thit Nuong",
+    description: "Grilled pork over rice vermicelli with fresh herbs and fish sauce",
+    price: "$14.95",
+    icon: "🥢",
   },
   {
     name: "Banh Mi Dac Biet",
     description: "Special combo sandwich with pate, ham, and fresh vegetables",
     price: "$9.95",
+    icon: "🥖",
   },
 ];
 
@@ -89,7 +92,7 @@ export default function Home() {
                 className="group bg-stone-50 rounded-2xl p-8 hover:bg-stone-100 transition-colors"
               >
                 <div className="w-16 h-16 bg-brand/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-2xl">🍜</span>
+                  <span className="text-2xl">{dish.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold text-stone-900 mb-2">
                   {dish.name}

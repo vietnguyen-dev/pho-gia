@@ -38,16 +38,17 @@ export default function AboutPage() {
               Vietnamese cuisine.
             </p>
             <p className="text-stone-600 leading-relaxed mb-6">
-              Our grandmother, Ba Ngoai, spent years perfecting her pho recipe. She
-              believed that great pho required patience: bones roasted until golden,
-              spices toasted to release their oils, and broth simmered for no less
-              than 12 hours. These traditions, passed down through three generations,
-              remain at the heart of everything we do.
+              Great pho requires patience: bones roasted until golden, spices
+              toasted to release their oils, and broth simmered for no less than
+              12 hours. These traditions, passed down through generations, remain
+              at the heart of everything we do.
             </p>
             <p className="text-stone-600 leading-relaxed mb-6">
-              In 2010, we opened the doors to Pho Gia in Milwaukie, fulfilling a
-              lifelong dream of sharing our family&apos;s cooking with the community.
-              The name &quot;Pho Gia&quot; means &quot;Family Pho,&quot; a reflection of our belief
+              Our Milwaukie location is a proud extension of our sister
+              restaurant, Pho Gia in Portland. After years of serving the
+              Portland community, we expanded to Milwaukie to bring the same
+              authentic flavors and warm hospitality to more of the area. The
+              name &quot;Pho Gia&quot; means &quot;Family Pho,&quot; a reflection of our belief
               that food is meant to bring people together.
             </p>
           </div>
@@ -152,15 +153,13 @@ export default function AboutPage() {
             A Family Tradition
           </h2>
           <p className="text-white/80 text-lg leading-relaxed mb-8">
-            Today, Pho Gia is run by the third generation of the Nguyen family.
-            While much has changed since our grandmother first taught us to make
-            pho, the love and care we put into every dish remains the same. We&apos;re
+            Today, Pho Gia is run by the Nguyen family across two locations—our
+            original Portland restaurant and right here in Milwaukie. The love
+            and care we put into every dish remains the same at both. We&apos;re
             honored to share our family&apos;s legacy with you.
           </p>
           <p className="text-white/60 italic">
             &quot;Good food is made with good ingredients, but great food is made with love.&quot;
-            <br />
-            <span className="text-white/80 not-italic">— Ba Ngoai Nguyen</span>
           </p>
         </div>
       </section>
