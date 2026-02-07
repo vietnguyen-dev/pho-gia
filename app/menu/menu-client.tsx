@@ -47,7 +47,7 @@ export default function MenuClient({
     <>
       {/* Search & Filters */}
       <section className="sticky top-20 z-40 bg-white border-b border-stone-200 py-4">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl lg:max-w-6xl mx-auto px-6">
           {/* Search Bar */}
           <div className="relative mb-4">
             <svg
