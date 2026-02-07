@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-type MenuItem = { name: string; desc: string; price: string };
+type Variant = { option: string; price: string };
+type MenuItem = { num: number; name: string; desc: string; price?: string; variants?: Variant[] };
 type Category = { title: string; description: string; items: MenuItem[] };
 type MenuData = Record<string, Category>;
 type Filter = { key: string; label: string };
@@ -95,13 +96,18 @@ export default function MenuClient({
                 <button
                   key={filter.key}
                   onClick={() => toggleFilter(filter.key)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${
                     activeFilters.has(filter.key)
                       ? "bg-brand text-white"
                       : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                   }`}
                 >
                   {filter.label}
+                  {activeFilters.has(filter.key) && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
                 </button>
               ))}
             {activeFilters.size > 0 && (
@@ -118,36 +124,67 @@ export default function MenuClient({
 
       {/* Menu Sections */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl lg:max-w-6xl mx-auto px-6">
           {filteredMenu.length > 0 ? (
-            filteredMenu.map((category) => (
-              <div key={category.key} className="mb-16">
-                <div className="mb-8">
-                  <h2 className="text-3xl font-bold text-stone-900 mb-2">
-                    {category.title}
-                  </h2>
-                  <p className="text-stone-500">{category.description}</p>
-                  <div className="w-16 h-1 bg-brand mt-4" />
-                </div>
+            filteredMenu.map((category) => {
+              const midpoint = Math.ceil(category.items.length / 2);
+              const leftColumn = category.items.slice(0, midpoint);
+              const rightColumn = category.items.slice(midpoint);
 
-                <div className="space-y-4">
-                  {category.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-start py-4 border-b border-stone-100 last:border-0"
-                    >
-                      <div className="flex-1 pr-4">
-                        <h3 className="font-semibold text-stone-900">
-                          {item.name}
-                        </h3>
-                        <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
-                      </div>
-                      <p className="text-brand font-semibold">${item.price}</p>
+              const renderItem = (item: MenuItem, idx: number) => (
+                <div
+                  key={idx}
+                  className="py-4 border-b border-stone-100"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1 pr-4">
+                      <h3 className="font-semibold text-stone-900">
+                        <span className="text-brand mr-2">{item.num}.</span>
+                        {item.name}
+                      </h3>
+                      <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
                     </div>
-                  ))}
+                    {item.price && (
+                      <p className="text-brand font-semibold">${item.price}</p>
+                    )}
+                  </div>
+                  {item.variants && (
+                    <div className="mt-2 ml-6 space-y-1">
+                      {item.variants.map((variant, vIndex) => (
+                        <div key={vIndex} className="flex justify-between text-sm">
+                          <span className="text-stone-600">
+                            <span className="text-brand font-medium mr-2">{String.fromCharCode(65 + vIndex)}.</span>
+                            {variant.option}
+                          </span>
+                          <span className="text-brand font-medium">${variant.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))
+              );
+
+              return (
+                <div key={category.key} className="mb-16">
+                  <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-stone-900 mb-2">
+                      {category.title}
+                    </h2>
+                    <p className="text-stone-500">{category.description}</p>
+                    <div className="w-16 h-1 bg-brand mt-4" />
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
+                    <div>
+                      {leftColumn.map((item, index) => renderItem(item, index))}
+                    </div>
+                    <div>
+                      {rightColumn.map((item, index) => renderItem(item, index))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })
           ) : (
             <div className="text-center py-16">
               <p className="text-stone-500 text-lg">No dishes found matching your search.</p>
