@@ -1,12 +1,13 @@
 export const menuData = {
   appetizers: {
     title: "Appetizers",
-    description: "Start your meal with our traditional Vietnamese appetizers",
+    description: "",
     items: [
       {
         num: 1,
         name: "Fresh Salad Rolls - Gỏi Cuốn",
         desc: "Rice paper rolled with vermicelli noodles, cilantro, basil, mint, red bell pepper, cucumber, carrots, lettuce served with peanut sauce (peanut sauce contains gluten) (fish sauce gluten free)",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "6.95" },
           { option: "Beef, Shrimp, or Avocado", price: "6.95" },
@@ -31,6 +32,8 @@ export const menuData = {
         name: "Deep fried tofu",
         desc: "Deep fried tofu with soy sauce. (soy sauce contains gluten) (sweet chilli sauce contains no gluten)",
         price: "5.95",
+        vegetarian: true,
+        glutenFree: true,
       },
       {
         num: 5,
@@ -47,31 +50,32 @@ export const menuData = {
       {
         num: 7,
         name: "Crispy Egg Rolls - Chả Giò",
-        desc: "Crispy fried egg rolls",
+        desc: "Crispy rolls with ground pork, mushrooms, shredded taro, onions, carrots served with sweet chilli sauce or fish sauce.",
         price: "5.95",
       },
       {
         num: 8,
         name: "Veggie Crispy Egg Rolls - Chả Giò Chay",
-        desc: "Crispy fried vegetable egg rolls",
+        desc: "Crispy rolls with tofu pork, mushrooms, shredded taro, onions, carrots served with sweet chilli sauce or fish sauce.",
         price: "5.95",
+        vegetarian: true,
       },
       {
         num: 9,
         name: "Chicken Wings - Cánh Gà Chiên",
-        desc: "Fried chicken wings",
+        desc: "Vietnamese style deep fried Chicken Wings marinated with a homemade sauce.",
         price: "11.95",
       },
       {
         num: 10,
-        name: "Coconut Breaded Chicken",
-        desc: "Coconut breaded fried chicken",
+        name: "Coconut Breaded Shrimp",
+        desc: "Deep fried Coconut Breaded Shrimp and green onions.",
         price: "5.95",
       },
       {
         num: 11,
         name: "Pepper Salted Shrimp or Calamari",
-        desc: "Crispy fried shrimp or calamari with pepper salt",
+        desc: "Crispy deep fried peppered salted shrimp and green onions.",
         price: "9.95",
       },
       {
@@ -83,13 +87,13 @@ export const menuData = {
       {
         num: 13,
         name: "French Fries",
-        desc: "Crispy fried potatoes",
+        desc: "Our French Fries are crispy and golden on the outside and fluffy on the isnde with zero grams of trans fat.",
         price: "4.95",
       },
       {
         num: 14,
         name: "Tempura Shrimp",
-        desc: "Lightly battered fried shrimp",
+        desc: "Our Tempura battered shrimp are tasty and delicious, extra crunchy on the outside and tender on the inside with zero grams of trans fat.",
         price: "5.95",
       },
     ],
@@ -97,31 +101,37 @@ export const menuData = {
 
   salads: {
     title: "Salads",
-    description: "Fresh Vietnamese salads with house-made dressing",
+    description: "",
     items: [
       {
         num: 15,
         name: "Gỏi Bò - Beef Salad",
-        desc: "Beef salad with lemongrass & onions",
+        desc: "Beef, lettuce ice berg, cilantro, basil, mint, red, yellow, orange bell pepper, cucumber, tomatoes, fried shallots, topped with roasted peanuts.",
         price: "13.95",
+        glutenFree: true,
       },
       {
         num: 16,
         name: "Chicken Breast Salad",
-        desc: "Grilled chicken breast salad",
+        desc: "Finely shredded cabbage, chicken, cilantro, basil, carrot, fried shallots, topped with roasted peanuts.",
         price: "13.30",
+        glutenFree: true,
       },
       {
         num: 17,
         name: "Garden Salad",
-        desc: "Vegetarian salad with tofu & fresh herbs",
+        desc: "Fresh lettue ice berg, red, yellow, orange bell pepper, tomatoes, cucumber, fresh advocado, boiled egg, seasoned crouton. Choice or chicken breast or Tofu or Pork or Beef. Choice of dressing: Ranch or Thousand Island or Italian olive garden or homemade sauce (homemade sauce contain gluten)",
         price: "13.50",
+        vegetarian: true,
+        glutenFree: true,
       },
       {
         num: 18,
         name: "Green Papaya Salad",
-        desc: "Shrimp salad with herbs & pickled vegetables",
+        desc: "Fine shredded green papaya, shrimp or tofu, or chicken, carrots, cilantro, basil, mint, tomatoes, red bell pepper , topped with fried shallots and roasted peanuts, served with sticky rice.",
         price: "13.95",
+        vegetarian: true,
+        glutenFree: true,
       },
     ],
   },
@@ -219,6 +229,7 @@ export const menuData = {
         name: "Phở Chay - Pho Veggie",
         desc: "Vegetable pho",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 38,
@@ -271,6 +282,7 @@ export const menuData = {
         num: 44,
         name: "Udon Soup",
         desc: "Japanese-style udon noodle soup",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -300,12 +312,15 @@ export const menuData = {
         name: "Seafood Rice Noodles or Egg Noodles Soup - Hủ Tiếu Hải Sản Đặc Biệt",
         desc: "Seafood noodle soup",
         price: "16.50",
+        glutenFree: true,
       },
       {
         num: 49,
         name: "Tofu with Rice Noodle or Egg Noodles Soup",
         desc: "Tofu noodle soup",
         price: "13.95",
+        vegetarian: true,
+        glutenFree: true,
       },
       {
         num: 50,
@@ -317,6 +332,7 @@ export const menuData = {
         num: 51,
         name: "Ramen Noodle Soup",
         desc: "Japanese-style ramen noodle soup",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -327,6 +343,7 @@ export const menuData = {
         num: 52,
         name: "Pasta Noodle Soup",
         desc: "Pasta noodle soup",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -381,6 +398,7 @@ export const menuData = {
         name: "Crispy Vegetarian Egg Rolls",
         desc: "Crispy vegetarian egg rolls over vermicelli",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 60,
@@ -393,12 +411,14 @@ export const menuData = {
         name: "Garlic Tofu",
         desc: "Garlic tofu over vermicelli",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 62,
         name: "Lemongrass Tofu",
         desc: "Lemongrass tofu over vermicelli",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 63,
@@ -435,6 +455,8 @@ export const menuData = {
         num: 67,
         name: "Fried Rice",
         desc: "Vietnamese fried rice",
+        vegetarian: true,
+        glutenFree: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -445,6 +467,8 @@ export const menuData = {
         num: 68,
         name: "Pineapple Fried Rice",
         desc: "Fried rice with pineapple",
+        vegetarian: true,
+        glutenFree: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -486,17 +510,20 @@ export const menuData = {
         name: "Ginger Chicken or Tofu",
         desc: "Ginger chicken or tofu with rice",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 75,
         name: "Lemongrass Chicken or Tofu",
         desc: "Lemongrass chicken or tofu with rice",
         price: "13.95",
+        vegetarian: true,
       },
       {
         num: 76,
         name: "Wok Broccoli Chicken or Tofu",
         desc: "Wok-fried broccoli with chicken or tofu",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -526,6 +553,7 @@ export const menuData = {
         num: 79,
         name: "Chinese Broccoli",
         desc: "Wok-fried Chinese broccoli",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -554,6 +582,7 @@ export const menuData = {
         num: 83,
         name: "Green Bean",
         desc: "Wok-fried green beans",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -577,12 +606,15 @@ export const menuData = {
 
   houseSpecialties: {
     title: "House Specialties",
-    description: "Yellow, red, or green curry with potatoes and mixed vegetables",
+    description:
+      "Yellow, red, or green curry with potatoes and mixed vegetables",
     items: [
       {
         num: 86,
         name: "Curry Chicken",
         desc: "Yellow, red, or green curry with potatoes and mixed vegetables",
+        vegetarian: true,
+        glutenFree: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -594,6 +626,7 @@ export const menuData = {
         name: "Vietnamese Crepes - Bánh Xèo",
         desc: "Vietnamese crepes",
         price: "15.50",
+        vegetarian: true,
       },
       {
         num: 88,
@@ -618,17 +651,20 @@ export const menuData = {
         name: "Grilled <u>Wild Caught</u> Salmon",
         desc: "Grilled wild caught salmon",
         price: "15.50",
+        glutenFree: true,
       },
       {
         num: 92,
         name: "Grilled <u>Wild Caught</u> Salmon in Banana Leaf",
         desc: "Grilled wild caught salmon wrapped in banana leaf",
         price: "16.50",
+        glutenFree: true,
       },
       {
         num: 93,
         name: "Eggplant",
         desc: "Stir-fried eggplant",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -639,6 +675,7 @@ export const menuData = {
         num: 94,
         name: "Sweet Potato Noodles",
         desc: "Stir-fried sweet potato noodles",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -649,6 +686,7 @@ export const menuData = {
         num: 95,
         name: "Yaki Udon",
         desc: "Stir-fried udon noodles",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -659,6 +697,7 @@ export const menuData = {
         num: 96,
         name: "Yaki Soba",
         desc: "Stir-fried soba noodles",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -669,6 +708,8 @@ export const menuData = {
         num: 97,
         name: "Pad Thai / Pad Kee Mao",
         desc: "Thai-style stir-fried noodles",
+        vegetarian: true,
+        glutenFree: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },
@@ -679,6 +720,7 @@ export const menuData = {
         num: 98,
         name: "Chow Mein (Stir Fried or Crispy Noodles)",
         desc: "Stir-fried or crispy chow mein noodles",
+        vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
           { option: "Beef or Shrimp", price: "14.95" },

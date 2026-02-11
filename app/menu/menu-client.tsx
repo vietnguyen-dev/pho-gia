@@ -3,7 +3,15 @@
 import { useState } from "react";
 
 type Variant = { option: string; price: string };
-type MenuItem = { num: number; name: string; desc: string; price?: string; variants?: Variant[] };
+type MenuItem = {
+  num: number;
+  name: string;
+  desc: string;
+  price?: string;
+  variants?: Variant[];
+  vegetarian?: boolean;
+  glutenFree?: boolean;
+};
 type Category = { title: string; description: string; items: MenuItem[] };
 type MenuData = Record<string, Category>;
 type Filter = { key: string; label: string };
@@ -38,7 +46,7 @@ export default function MenuClient({
       items: category.items.filter(
         (item) =>
           item.name.toLowerCase().includes(search.toLowerCase()) ||
-          item.desc.toLowerCase().includes(search.toLowerCase())
+          item.desc.toLowerCase().includes(search.toLowerCase()),
       ),
     }))
     .filter((category) => category.items.length > 0);
@@ -88,6 +96,29 @@ export default function MenuClient({
             )}
           </div>
 
+          {/* Dietary Legend */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-sm text-stone-600">
+            <span className="flex items-center gap-1.5">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold leading-none">
+                V
+              </span>
+              Vegetarian Option Available
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold leading-none">
+                GF
+              </span>
+              Gluten-Free Option Available
+            </span>
+            <span className="flex items-center gap-1.5">
+              <svg className="w-5 h-5 text-red-500" viewBox="0 0 512 512" fill="currentColor">
+                <path d="M330.67 263.12V173.4l-52.75-24.22C219.44 218.76 197.58 400 56 400a56 56 0 0 0 0 112c212.64 0 370.65-122.87 419.18-210.34l-144.51-38.66zm46.1-74.98c6.37-7.45 17.54-7.93 24.59-1.11l28.75 27.79c6.41 6.19 6.86 16.39 1 23.25L400 268.44l-53.18-14.22z" />
+              </svg>
+              Spicy
+            </span>
+            <span className="text-stone-700 font-medium">*Prices subject to change</span>
+          </div>
+
           {/* Filter Buttons */}
           <div className="flex gap-2 overflow-x-auto pb-2">
             {filters
@@ -104,8 +135,18 @@ export default function MenuClient({
                 >
                   {filter.label}
                   {activeFilters.has(filter.key) && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   )}
                 </button>
@@ -132,15 +173,28 @@ export default function MenuClient({
               const rightColumn = category.items.slice(midpoint);
 
               const renderItem = (item: MenuItem, idx: number) => (
-                <div
-                  key={idx}
-                  className="py-4 border-b border-stone-100"
-                >
+                <div key={idx} className="py-4 border-b border-stone-100">
                   <div className="flex justify-between items-start">
                     <div className="flex-1 pr-4">
                       <h3 className="font-semibold text-stone-900">
                         <span className="text-brand mr-2">{item.num}.</span>
                         {item.name}
+                        {item.vegetarian && (
+                          <span
+                            className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold leading-none ml-1.5 align-middle"
+                            title="Vegetarian option available"
+                          >
+                            V
+                          </span>
+                        )}
+                        {item.glutenFree && (
+                          <span
+                            className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold leading-none ml-1 align-middle"
+                            title="Gluten-free option available"
+                          >
+                            GF
+                          </span>
+                        )}
                       </h3>
                       <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
                     </div>
@@ -151,12 +205,19 @@ export default function MenuClient({
                   {item.variants && (
                     <div className="mt-2 ml-6 space-y-1">
                       {item.variants.map((variant, vIndex) => (
-                        <div key={vIndex} className="flex justify-between text-sm">
+                        <div
+                          key={vIndex}
+                          className="flex justify-between text-sm"
+                        >
                           <span className="text-stone-600">
-                            <span className="text-brand font-medium mr-2">{String.fromCharCode(65 + vIndex)}.</span>
+                            <span className="text-brand font-medium mr-2">
+                              {String.fromCharCode(65 + vIndex)}.
+                            </span>
                             {variant.option}
                           </span>
-                          <span className="text-brand font-medium">${variant.price}</span>
+                          <span className="text-brand font-medium">
+                            ${variant.price}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -179,7 +240,9 @@ export default function MenuClient({
                       {leftColumn.map((item, index) => renderItem(item, index))}
                     </div>
                     <div>
-                      {rightColumn.map((item, index) => renderItem(item, index))}
+                      {rightColumn.map((item, index) =>
+                        renderItem(item, index),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -187,7 +250,9 @@ export default function MenuClient({
             })
           ) : (
             <div className="text-center py-16">
-              <p className="text-stone-500 text-lg">No dishes found matching your search.</p>
+              <p className="text-stone-500 text-lg">
+                No dishes found matching your search.
+              </p>
               <button
                 onClick={() => {
                   setSearch("");
@@ -199,15 +264,6 @@ export default function MenuClient({
               </button>
             </div>
           )}
-
-          {/* Note */}
-          <div className="bg-stone-50 rounded-2xl p-8 text-center">
-            <p className="text-stone-600">
-              Prices subject to change. Please inform us of any allergies.
-              <br />
-              Gluten-free and vegetarian options available upon request.
-            </p>
-          </div>
         </div>
       </section>
     </>
