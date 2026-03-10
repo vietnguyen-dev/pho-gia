@@ -29,12 +29,14 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <div className="space-y-2 text-stone-400">
-              <p
-                className="cursor-pointer hover:text-white transition-colors select-all"
-                title="Click to select address"
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=4607+SE+Boardman+Ave+Milwaukie+OR+97267"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
               >
                 4607 SE Boardman Ave, Milwaukie, OR 97267
-              </p>
+              </a>
               <p className="mt-4">
                 <a
                   href="tel:+15033035442"
