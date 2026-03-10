@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Pho Gia Milwaukie | Authentic Vietnamese Cuisine",
   description:
-    "Experience authentic Vietnamese pho and cuisine at Pho Gia Milwaukie. Fresh ingredients, traditional recipes, and a warm atmosphere.",
+    "Vietnamese restaurant serving pho soups, noodles & rice dishes in simple, traditional digs. Experience authentic Vietnamese pho and cuisine at Pho Gia Milwaukie. Fresh ingredients, traditional recipes, and a warm atmosphere.",
   icons: {
     icon: "/pho-gia-icon.jpeg",
   },

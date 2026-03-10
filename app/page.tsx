@@ -10,7 +10,8 @@ const featuredDishes = [
   },
   {
     name: "Bun Thit Nuong",
-    description: "Grilled pork over rice vermicelli with fresh herbs and fish sauce",
+    description:
+      "Grilled pork over rice vermicelli with fresh herbs and fish sauce",
     price: "$14.95",
     icon: "🥢",
   },
@@ -45,9 +46,10 @@ export default function Home() {
             <span className="text-white">Vietnam</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Experience the rich flavors of traditional Vietnamese cooking.
-            Handcrafted pho, fresh ingredients, and recipes passed down through
-            generations.
+            Vietnamese restaurant serving pho soups, noodles & rice dishes in
+            simple, traditional digs. Experience the rich flavors of traditional
+            Vietnamese cooking. Handcrafted pho, fresh ingredients, and recipes
+            passed down through generations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -64,9 +66,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <p className="mt-10 text-white/70 text-sm">
-            Open Daily: 11am - 9pm
-          </p>
+          <p className="mt-10 text-white/70 text-sm">Open Daily: 11am - 9pm</p>
         </div>
 
         {/* Scroll Indicator */}
@@ -87,9 +87,7 @@ export default function Home() {
             <p className="text-brand font-medium tracking-widest uppercase mb-2">
               Signature Dishes
             </p>
-            <h2 className="text-4xl font-bold text-stone-900">
-              Our Favorites
-            </h2>
+            <h2 className="text-4xl font-bold text-stone-900">Our Favorites</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
