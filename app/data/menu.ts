@@ -935,6 +935,7 @@ export const menuData = {
 
   desserts: {
     title: "Desserts",
+    description: "",
     items: [
       {
         num: 164,
