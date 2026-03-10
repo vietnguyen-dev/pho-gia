@@ -139,7 +139,7 @@ export const menuData = {
   pho: {
     title: "Phở - Beef Noodle Soups",
     description:
-      "Traditional Vietnamese noodle soup with 12-hour simmered broth",
+      "All Gluten Free. Served with rice noodles, fresh bean sprouts, basil leaves, onion, celery and a lime wedge, except for entrees with *. Add 2.00 for Large size, Add 4.00 for Supper Bowl Size, add 2.50 for extra vegetable or noodle, ad extra meat or meatball 4.00, add extra shrimp or Seafood 4.00",
     items: [
       { num: 27, name: "Phở Gân", desc: "Beef tendon", price: "15.50" },
       { num: 28, name: "Phở Tái", desc: "Beef round steak", price: "13.95" },
@@ -249,25 +249,25 @@ export const menuData = {
       },
       {
         num: 47,
-        name: "Spicy Beef Noodle - Bún Bò Huế",
+        name: "Spicy Beef Noodle - Bún Bò Huế *",
         desc: "Round rice noodles, beef and meatball, cilantro, onion in a spicy lemongras beef broth. (Only one size)",
         price: "13.95",
       },
       {
         num: 48,
-        name: "Chicken Glass Noodle Soup - Miến Gà",
+        name: "Chicken Glass Noodle Soup - Miến Gà *",
         desc: "Glass noodles, chicken breast, cilantro, onions, fried shallots with chicken broth. (Only one size)",
         price: "14.95",
       },
       {
         num: 49,
-        name: "Bún Măng Gà - Chicken Bamboo Shoot Vermicelli",
+        name: "Bún Măng Gà - Chicken Bamboo Shoot Vermicelli *",
         desc: "Bamboo shoot, chicken, cilantro, onion, fried shallots with vermicelli rice noodle and chicken broth (Only one size)",
         price: "14.95",
       },
       {
         num: 50,
-        name: "Tom Yum or Tom Kha Noodle Soup",
+        name: "Tom Yum or Tom Kha Noodle Soup *",
         desc: "Spicy and sour lemongrass soup with rice noodle, galangal root, lime leaves, tomatoes, celery, shallots, and mushrooms. (Only one size) (Plesae mention with or without coconut milk)",
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "14.95" },
@@ -277,7 +277,7 @@ export const menuData = {
       },
       {
         num: 51,
-        name: "Beef Stew",
+        name: "Beef Stew *",
         desc: "Vietnamese flavor stewed beef with carrot, potato, serve with French bread or vermicelli noodle or rice",
         price: "14.95",
       },
@@ -286,7 +286,8 @@ export const menuData = {
 
   eggNoodle: {
     title: "Egg Noodle Soups",
-    description: "Rich and savory egg noodle soup dishes",
+    description:
+      "Served with egg noodles, fresh bean sprouts, basil leaves, onion, celery and a lime wedge, except for entrees with *. Add extra vegetable or noodle 2.50, Add extra meat or meatball 4.00, Add extra shrimp or Seafood 4.00",
     items: [
       {
         num: 56,
@@ -365,7 +366,8 @@ export const menuData = {
 
   bun: {
     title: "Bún - Vermicelli Noodles",
-    description: "Rice vermicelli with fresh vegetables and fish sauce",
+    description:
+      "Bowl of Vermicelli rice noodles Served with Lettuce, bean sprouts, basil, mint, cilantro, cucumbers, fried fresh green onions, pickeled carrots and radish, fried shallots, roasted peanuts Add extra vegetable or noodle 2.50, Add extra meat or meatball 4.00, Add extra shrimp or Seafood 4.00",
     items: [
       {
         num: 70,
@@ -453,7 +455,8 @@ export const menuData = {
 
   com: {
     title: "Cơm - Rice Entrees",
-    description: "Served with steamed jasmine rice and vegetables",
+    description:
+      "All Plates Served with steam white or brown rice or rice noodle and stir fried vegetables except for entrees with *. Add extra vegetable or noodle 2.50, Add extra meat or meatball 4.00, Add extra shrimp or Seafood 4.00",
     items: [
       {
         num: 89,
@@ -475,7 +478,7 @@ export const menuData = {
       },
       {
         num: 91,
-        name: "Pineapple Fried Rice",
+        name: "Pineapple Fried Rice *",
         desc: "Fried rice with egg, pineapple, onion and basil leaf.",
         vegetarian: true,
         glutenFree: true,
@@ -511,7 +514,7 @@ export const menuData = {
       },
       {
         num: 96,
-        name: "Chicken Satay",
+        name: "Chicken Satay *",
         desc: "Stir fried marinated chicken in curry sauce with carrots and onions.",
         price: "13.95",
       },
@@ -551,7 +554,8 @@ export const menuData = {
 
   beef: {
     title: "Beef Entrees",
-    description: "Premium beef dishes wok-fired to perfection",
+    description:
+      "All Plates Served with steam white or brown rice or rice noodle and stir fried vegetables except for entrees with *. Add extra vegetable or noodle 2.50, Add extra meat or meatball 4.00, Add extra shrimp or Seafood 4.00",
     items: [
       {
         num: 108,
@@ -561,7 +565,7 @@ export const menuData = {
       },
       {
         num: 109,
-        name: "Chinese Broccoli",
+        name: "Chinese Broccoli *",
         desc: "Stir fried wit Chinese broccoli, garlic or ginger in special homemade sauce. (please mention with garlic or ginger)",
         vegetarian: true,
         variants: [
@@ -590,7 +594,7 @@ export const menuData = {
       },
       {
         num: 113,
-        name: "Green Bean",
+        name: "Green Bean *",
         desc: "Stir fried with gren bean, garlic in homemade sauce.",
         vegetarian: true,
         variants: [
@@ -601,13 +605,13 @@ export const menuData = {
       },
       {
         num: 114,
-        name: "Luc Lac Beef",
+        name: "Luc Lac Beef *",
         desc: "Cubed beef tenderloins tossed with garlic, onions, bell peppers in special homemade sauce.",
         price: "14.95",
       },
       {
         num: 115,
-        name: "Pineapple Beef",
+        name: "Pineapple Beef *",
         desc: "Stir fried with pineapple, garlic in special homemade sauce.",
         price: "14.95",
       },
@@ -617,7 +621,7 @@ export const menuData = {
   houseSpecialties: {
     title: "House Specialties",
     description:
-      "Yellow or red or green curry with potatoes and mixed vegetables",
+      "All Plates Served with steam white or brown rice or rice noodle and stir fried vegetables except for entrees with *. Add extra vegetable or noodle 2.50, Add extra meat or meatball 4.00, Add extra shrimp or Seafood 4.00",
     items: [
       {
         num: 122,
@@ -646,33 +650,33 @@ export const menuData = {
       },
       {
         num: 125,
-        name: "Pepper Salted Calamari",
+        name: "Pepper Salted Calamari *",
         desc: "Crispy deep fried pepper salted calimari with onions.",
         price: "14.50",
       },
       {
         num: 126,
-        name: "Pepper Salted Shrimp",
+        name: "Pepper Salted Shrimp *",
         desc: "Crispy deep fried pepper salted Shrimp with onions.",
         price: "14.50",
       },
       {
         num: 127,
-        name: "Grilled <u>Wild Caught</u> Salmon",
+        name: "Grilled Wild Caught Salmon",
         desc: "Grilled salmon with fresh stir fried mixed vegetables.",
         price: "15.50",
         glutenFree: true,
       },
       {
         num: 128,
-        name: "Grilled <u>Wild Caught</u> Salmon in Banana Leaf",
+        name: "Grilled Wild Caught Salmon in Banana Leaf",
         desc: "Grilled salmon wrap in banana leaf for tender and juicy entree with stir fried mixed vegetables.",
         price: "16.50",
         glutenFree: true,
       },
       {
         num: 129,
-        name: "Eggplant",
+        name: "Eggplant *",
         desc: "Stir fried with Eggplant, red onion and garlic.",
         vegetarian: true,
         variants: [
@@ -694,7 +698,7 @@ export const menuData = {
       },
       {
         num: 131,
-        name: "Yaki Udon",
+        name: "Yaki Udon *",
         desc: "Japanese Udon noodles stir fried with mixed vegetables and toped with roasted sesame.",
         vegetarian: true,
         variants: [
@@ -705,7 +709,7 @@ export const menuData = {
       },
       {
         num: 132,
-        name: "Yaki Soba",
+        name: "Yaki Soba *",
         desc: "Japanese Soba noodles stir fried with mixed vegetables and toped with roasted sesame.",
         vegetarian: true,
         variants: [
@@ -716,7 +720,7 @@ export const menuData = {
       },
       {
         num: 133,
-        name: "Pad Thai / Pad Kee Mao",
+        name: "Pad Thai * ",
         desc: "(Make with or without peanut sauce) Thick rice noodles with eggs, bean sprouts, green onions, garlic, and ground peanuts.",
         vegetarian: true,
         glutenFree: true,
@@ -728,7 +732,7 @@ export const menuData = {
       },
       {
         num: 134,
-        name: "Chow Mein (Stir Fried or Crispy Noodles)",
+        name: "Pad Kee Mao (Drunken Noodles) *",
         desc: "Wide rice noodles with egg and stir fried mixed vegetables.",
         vegetarian: true,
         variants: [
