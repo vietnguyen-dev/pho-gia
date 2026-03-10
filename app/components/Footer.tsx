@@ -21,9 +21,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Hours</h4>
             <div className="space-y-2 text-stone-400">
-              <p>Monday - Thursday: 11am - 9pm</p>
-              <p>Friday - Saturday: 11am - 10pm</p>
-              <p>Sunday: 12pm - 8pm</p>
+              <p>Open Daily: 11am - 9pm</p>
             </div>
           </div>
 
@@ -31,22 +29,18 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <div className="space-y-2 text-stone-400">
-              <p>10000 SE Main Street</p>
-              <p>Milwaukie, OR 97222</p>
+              <p
+                className="cursor-pointer hover:text-white transition-colors select-all"
+                title="Click to select address"
+              >
+                4607 SE Boardman Ave, Milwaukie, OR 97267
+              </p>
               <p className="mt-4">
                 <a
-                  href="tel:+15035551234"
+                  href="tel:+15033035442"
                   className="hover:text-white transition-colors"
                 >
-                  (503) 555-1234
-                </a>
-              </p>
-              <p>
-                <a
-                  href="mailto:hello@phogiamilwaukie.com"
-                  className="hover:text-white transition-colors"
-                >
-                  hello@phogiamilwaukie.com
+                  (503) 303-5442
                 </a>
               </p>
             </div>

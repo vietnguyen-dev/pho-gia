@@ -63,6 +63,10 @@ export default function Home() {
               Our Story
             </Link>
           </div>
+
+          <p className="mt-10 text-white/70 text-sm">
+            Open Daily: 11am - 9pm
+          </p>
         </div>
 
         {/* Scroll Indicator */}
@@ -194,10 +198,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+15035551234"
+              href="tel:+15033035442"
               className="bg-brand text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-brand-light transition-colors"
             >
-              Call (503) 555-1234
+              Call (503) 303-5442
             </a>
             <a
               href="#contact"
