@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Variant = { option: string; price: string };
 type MenuItem = {
@@ -24,7 +24,15 @@ export default function MenuClient({
   filters: Filter[];
 }) {
   const [search, setSearch] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(true);
   const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const stored = localStorage.getItem("menuFiltersOpen");
+    if (stored !== null) {
+      setFiltersOpen(stored === "true");
+    }
+  }, []);
 
   const toggleFilter = (key: string) => {
     setActiveFilters((prev) => {
@@ -54,12 +62,40 @@ export default function MenuClient({
   return (
     <>
       {/* Search & Filters */}
-      <section className="sticky top-20 z-40 bg-white border-b border-stone-200 py-4">
+      <section className="sticky top-20 z-40 bg-white border-b border-stone-200">
         <div className="max-w-4xl lg:max-w-6xl mx-auto px-6">
-          {/* Search Bar */}
-          <div className="relative mb-4">
+          {/* Toggle Bar */}
+          <button
+            onClick={() => {
+              const next = !filtersOpen;
+              setFiltersOpen(next);
+              localStorage.setItem("menuFiltersOpen", String(next));
+            }}
+            className="flex items-center justify-between w-full py-3 text-stone-600 hover:text-stone-900 transition-colors"
+          >
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              Search & Filter
+              {(search || activeFilters.size > 0) && (
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand text-white text-xs font-bold">
+                  {(search ? 1 : 0) + activeFilters.size}
+                </span>
+              )}
+            </span>
             <svg
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400"
+              className={`w-5 h-5 transition-transform duration-200 ${filtersOpen ? "rotate-180" : ""}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -68,79 +104,43 @@ export default function MenuClient({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                d="M19 9l-7 7-7-7"
               />
             </svg>
-            <input
-              type="text"
-              placeholder="Search dishes..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-12 py-3 border border-stone-200 rounded-full focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
-            />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 hover:text-stone-600 transition-colors"
-                aria-label="Clear search"
-              >
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          </button>
+
+          {/* Collapsible Content */}
+          {filtersOpen && (
+            <div className="pb-4">
+              {/* Search Bar */}
+              <div className="relative mb-4">
+                <svg
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
-              </button>
-            )}
-          </div>
-
-          {/* Dietary Legend */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-sm text-stone-600">
-            <span className="flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold leading-none">
-                V
-              </span>
-              Vegetarian Option Available
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold leading-none">
-                GF
-              </span>
-              Gluten-Free Option Available
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg className="w-5 h-5 text-red-500" viewBox="0 0 512 512" fill="currentColor">
-                <path d="M330.67 263.12V173.4l-52.75-24.22C219.44 218.76 197.58 400 56 400a56 56 0 0 0 0 112c212.64 0 370.65-122.87 419.18-210.34l-144.51-38.66zm46.1-74.98c6.37-7.45 17.54-7.93 24.59-1.11l28.75 27.79c6.41 6.19 6.86 16.39 1 23.25L400 268.44l-53.18-14.22z" />
-              </svg>
-              Spicy
-            </span>
-            <span className="text-stone-700 font-medium">*Prices subject to change</span>
-          </div>
-
-          {/* Filter Buttons */}
-          <div className="flex gap-2 overflow-x-auto pb-2">
-            {filters
-              .filter((f) => f.key !== "all")
-              .map((filter) => (
-                <button
-                  key={filter.key}
-                  onClick={() => toggleFilter(filter.key)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${
-                    activeFilters.has(filter.key)
-                      ? "bg-brand text-white"
-                      : "bg-stone-100 text-stone-600 hover:bg-stone-200"
-                  }`}
-                >
-                  {filter.label}
-                  {activeFilters.has(filter.key) && (
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                <input
+                  type="text"
+                  placeholder="Search dishes..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full pl-12 pr-12 py-3 border border-stone-200 rounded-full focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch("")}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 hover:text-stone-600 transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -148,18 +148,82 @@ export default function MenuClient({
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
-                  )}
-                </button>
-              ))}
-            {activeFilters.size > 0 && (
-              <button
-                onClick={() => setActiveFilters(new Set())}
-                className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-stone-500 hover:text-stone-700 transition-colors"
-              >
-                Clear all
-              </button>
-            )}
-          </div>
+                  </button>
+                )}
+              </div>
+
+              {/* Dietary Legend */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-sm text-stone-600">
+                <span className="flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold leading-none">
+                    V
+                  </span>
+                  Vegetarian Option Available
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold leading-none">
+                    GF
+                  </span>
+                  Gluten-Free Option Available
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg
+                    className="w-5 h-5 text-red-500"
+                    viewBox="0 0 512 512"
+                    fill="currentColor"
+                  >
+                    <path d="M330.67 263.12V173.4l-52.75-24.22C219.44 218.76 197.58 400 56 400a56 56 0 0 0 0 112c212.64 0 370.65-122.87 419.18-210.34l-144.51-38.66zm46.1-74.98c6.37-7.45 17.54-7.93 24.59-1.11l28.75 27.79c6.41 6.19 6.86 16.39 1 23.25L400 268.44l-53.18-14.22z" />
+                  </svg>
+                  Spicy
+                </span>
+                <span className="text-stone-700 font-medium">
+                  *Prices subject to change
+                </span>
+              </div>
+
+              {/* Filter Buttons */}
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {filters
+                  .filter((f) => f.key !== "all")
+                  .map((filter) => (
+                    <button
+                      key={filter.key}
+                      onClick={() => toggleFilter(filter.key)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${
+                        activeFilters.has(filter.key)
+                          ? "bg-brand text-white"
+                          : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                      }`}
+                    >
+                      {filter.label}
+                      {activeFilters.has(filter.key) && (
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                {activeFilters.size > 0 && (
+                  <button
+                    onClick={() => setActiveFilters(new Set())}
+                    className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-stone-500 hover:text-stone-700 transition-colors"
+                  >
+                    Clear all
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
