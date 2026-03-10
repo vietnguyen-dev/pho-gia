@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-type Variant = { option: string; price: string };
+type Variant = { option: string; price?: string };
 type MenuItem = {
   num: number;
   name: string;
@@ -11,6 +11,7 @@ type MenuItem = {
   variants?: Variant[];
   vegetarian?: boolean;
   glutenFree?: boolean;
+  noLetterPrefix?: boolean;
 };
 type Category = { title: string; description: string; items: MenuItem[] };
 type MenuData = Record<string, Category>;
@@ -274,14 +275,18 @@ export default function MenuClient({
                           className="flex justify-between text-sm"
                         >
                           <span className="text-stone-600">
-                            <span className="text-brand font-medium mr-2">
-                              {String.fromCharCode(65 + vIndex)}.
-                            </span>
+                            {!item.noLetterPrefix && (
+                              <span className="text-brand font-medium mr-2">
+                                {String.fromCharCode(65 + vIndex)}.
+                              </span>
+                            )}
                             {variant.option}
                           </span>
-                          <span className="text-brand font-medium">
-                            ${variant.price}
-                          </span>
+                          {variant.price && (
+                            <span className="text-brand font-medium">
+                              ${variant.price}
+                            </span>
+                          )}
                         </div>
                       ))}
                     </div>

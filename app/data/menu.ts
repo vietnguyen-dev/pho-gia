@@ -617,7 +617,7 @@ export const menuData = {
   houseSpecialties: {
     title: "House Specialties",
     description:
-      "Yellow, red, or green curry with potatoes and mixed vegetables",
+      "Yellow or red or green curry with potatoes and mixed vegetables",
     items: [
       {
         num: 122,
@@ -634,46 +634,46 @@ export const menuData = {
       {
         num: 123,
         name: "Vietnamese Crepes - Bánh Xèo",
-        desc: "Vietnamese crepes",
+        desc: "Vietnamese crispy crepe with shrimp and pork or chicken or tofu, bean sprouts, lettuce, mint, mung bean and a side of house fish sauce.",
         price: "15.50",
         vegetarian: true,
       },
       {
         num: 124,
         name: "New York Steak",
-        desc: "New York steak",
+        desc: "Grilled steak marinated with garlic and ginger served with stir fried vegetables. (Steam vegetable options for without gluten)",
         price: "16.50",
       },
       {
         num: 125,
         name: "Pepper Salted Calamari",
-        desc: "Pepper salted calamari",
+        desc: "Crispy deep fried pepper salted calimari with onions.",
         price: "14.50",
       },
       {
         num: 126,
         name: "Pepper Salted Shrimp",
-        desc: "Pepper salted shrimp",
+        desc: "Crispy deep fried pepper salted Shrimp with onions.",
         price: "14.50",
       },
       {
         num: 127,
         name: "Grilled <u>Wild Caught</u> Salmon",
-        desc: "Grilled wild caught salmon",
+        desc: "Grilled salmon with fresh stir fried mixed vegetables.",
         price: "15.50",
         glutenFree: true,
       },
       {
         num: 128,
         name: "Grilled <u>Wild Caught</u> Salmon in Banana Leaf",
-        desc: "Grilled wild caught salmon wrapped in banana leaf",
+        desc: "Grilled salmon wrap in banana leaf for tender and juicy entree with stir fried mixed vegetables.",
         price: "16.50",
         glutenFree: true,
       },
       {
         num: 129,
         name: "Eggplant",
-        desc: "Stir-fried eggplant",
+        desc: "Stir fried with Eggplant, red onion and garlic.",
         vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
@@ -684,7 +684,7 @@ export const menuData = {
       {
         num: 130,
         name: "Sweet Potato Noodles",
-        desc: "Stir-fried sweet potato noodles",
+        desc: "Japanese sweet potato noodles stir fried with mixed vegetables and toped with roasted sesame.",
         vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
@@ -695,7 +695,7 @@ export const menuData = {
       {
         num: 131,
         name: "Yaki Udon",
-        desc: "Stir-fried udon noodles",
+        desc: "Japanese Udon noodles stir fried with mixed vegetables and toped with roasted sesame.",
         vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
@@ -706,7 +706,7 @@ export const menuData = {
       {
         num: 132,
         name: "Yaki Soba",
-        desc: "Stir-fried soba noodles",
+        desc: "Japanese Soba noodles stir fried with mixed vegetables and toped with roasted sesame.",
         vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
@@ -717,7 +717,7 @@ export const menuData = {
       {
         num: 133,
         name: "Pad Thai / Pad Kee Mao",
-        desc: "Thai-style stir-fried noodles",
+        desc: "(Make with or without peanut sauce) Thick rice noodles with eggs, bean sprouts, green onions, garlic, and ground peanuts.",
         vegetarian: true,
         glutenFree: true,
         variants: [
@@ -729,7 +729,18 @@ export const menuData = {
       {
         num: 134,
         name: "Chow Mein (Stir Fried or Crispy Noodles)",
-        desc: "Stir-fried or crispy chow mein noodles",
+        desc: "Wide rice noodles with egg and stir fried mixed vegetables.",
+        vegetarian: true,
+        variants: [
+          { option: "Chicken, Pork, or Tofu", price: "13.95" },
+          { option: "Beef or Shrimp", price: "14.95" },
+          { option: "Shrimp, Scallops, Mussels, Squid", price: "16.95" },
+        ],
+      },
+      {
+        num: 135,
+        name: "Chow Main Stir Fried or Crispy Noodles",
+        desc: "Skinny egg noodles stir fried with fresh vegetables.",
         vegetarian: true,
         variants: [
           { option: "Chicken, Pork, or Tofu", price: "13.95" },
@@ -742,163 +753,207 @@ export const menuData = {
 
   drinks: {
     title: "Drinks - Nước Uống",
-    description: "Hot & cold beverages, smoothies, and cocktails",
+    description:
+      "Smooothies, Thai Ice Tea and Boba Tea, Milk Tea contains dairy (Nondairy upon available)",
     items: [
       {
         num: 142,
         name: "Hot or Cold Organic Cafe Vietnam",
-        desc: "Organic Vietnamese coffee, hot or iced",
+        desc: "Vietnamese Espresso Coffee with Condensed Milk",
         price: "4.95",
       },
       {
         num: 143,
         name: "Thai Ice Tea",
-        desc: "Thai iced tea",
+        desc: "",
         price: "4.50",
       },
       {
         num: 144,
         name: "Organic Real Fruit Smoothies",
-        desc: "Smoothies made with organic real fruits",
+        desc: "(Avocado, Mango, Blueberry, Strawberry, or Four berry blend)",
         price: "6.00",
       },
       {
         num: 145,
-        name: "Boba Tea",
-        desc: "Boba tea",
+        name: "Smoothies, Boba Teas, Milk Teas",
+        desc: "Available with tapioca Pearls or Crystal Boba",
         price: "4.95",
+        noLetterPrefix: true,
+        variants: [
+          {
+            option:
+              "Jellies: Coconut, Rainbow, Peach, Mango, Honeydew, Strawberry",
+          },
+          { option: "Popping Tapioca:" },
+          {
+            option:
+              "Green Apple, Blueberry, Peach, Strawberry, Mango, Lychee, Pomegranate, Cherry, Kiwi",
+          },
+          {
+            option: "Flavors Selection for Smoothies and Boba Tea:",
+          },
+          {
+            option:
+              "Banana, Blue berry, Coffee, Coconut, Chocolate, Thai Tea, Mango, Pineapple, Strawberry, Lavendar, Rasberry, Passion, Vanilla, Cantaloupe, Green Apple, Taro, Almond, Green Tea, Peach, Lychee, Red Bean, Honeydew, Mocha, Kiwi, gren tea, Vanilla, Watermelon, Cherry, Papaya.",
+          },
+          { option: "Milk Teas" },
+          {
+            option:
+              "Banana, Black Tea, Coconut, Honeydew, Lavendar, Mango, Green Tea, Peach, Rose, Strawberry, Taro, Thai Tea, Toffee, Vanilla, or Cherry.",
+          },
+          {
+            option: "Additoinal Tapioca or Crystal or Rainbow Jellies",
+            price: ".75",
+          },
+        ],
       },
       {
         num: 146,
-        name: "Milk Teas",
-        desc: "Milk teas",
-        price: "4.95",
-      },
-      {
-        num: 147,
         name: "Fresh Whole Coconut",
-        desc: "Fresh whole coconut",
+        desc: "",
         price: "5.95",
       },
       {
-        num: 148,
+        num: 147,
         name: "Fresh Lemonade",
-        desc: "Fresh lemonade",
+        desc: "",
+        price: "3.50",
+      },
+      {
+        num: 148,
+        name: "Soft Drinks",
+        desc: "Coke Coke Zero, Cherry Coke, Diet Coke, Sprite, Root Beer, Fanta Orange, Dr. Peper. Soda, Shirley Temple, Roy Rodgers.",
         price: "3.50",
       },
       {
         num: 149,
-        name: "Soft Drinks",
-        desc: "Soft drinks",
-        price: "3.50",
-      },
-      {
-        num: 150,
         name: "Ice Tea",
-        desc: "Iced tea",
+        desc: "",
         price: "2.00",
       },
       {
-        num: 151,
+        num: 150,
         name: "Cappuccino",
-        desc: "Cappuccino",
+        desc: "",
         price: "3.75",
       },
       {
-        num: 152,
+        num: 151,
         name: "Hot Chocolate Cocoa or Milk Chocolate",
-        desc: "Hot chocolate cocoa or milk chocolate",
+        desc: "",
         price: "3.00",
       },
       {
-        num: 153,
+        num: 152,
         name: "Hot Tea",
-        desc: "Hot tea",
+        desc: "Green Tea, Oolong Tea, Jasmine, Orange Spice, Englush breakfast, Chai Spice black tea, Guava. Caffeine free: Lemon Ginger, peppermint, chamonille, Decaf green tea.",
         price: "1.00",
       },
       {
-        num: 154,
+        num: 153,
         name: "Beer",
-        desc: "Beer",
+        desc: "Sai Gon Export, Tiger Tsingtao, Sapporo, Singha, White Claw Hard Seltzer, Hefeweizen, Mirror Pond, Black Butte Porter, Blue Moon, Ginger Beer, Stella Artois, Budweiser, Coors Light, Corona, IPA Ninkasi, IPA Fresh Squeezed, None Alcohol Beer",
         price: "4.50",
+      },
+      {
+        num: 154,
+        name: "Soju from Korea Original",
+        desc: "Strawberry or Peach or Mango or Pineapple, or Lechee, or Yogurt",
+        price: "6.95",
       },
       {
         num: 155,
-        name: "Soju from Korea - Original",
-        desc: "Korean soju, original",
-        price: "4.50",
+        name: "Cold Sake (Coconut Lemongrass Nigori)",
+        desc: "",
+        price: "6.95",
       },
       {
         num: 156,
-        name: "Cold Sake (Coconut Lemongrass Nigori)",
-        desc: "Cold sake, coconut lemongrass nigori",
+        name: "Cold Sake (Kurosawa Nigori - Fruity, Creamy Sweet)",
+        desc: "",
         price: "6.95",
       },
       {
         num: 157,
-        name: "Cold Sake (Kurosawa Nigori - Fruity, Creamy Sweet)",
-        desc: "Cold sake, Kurosawa nigori, fruity and creamy sweet",
+        name: "Cold Sake (Sayuri Nigori - unfiltered)",
+        desc: "",
         price: "6.95",
       },
       {
         num: 158,
-        name: "Warm Sake (Served in Bottle)",
-        desc: "Warm sake served in bottle",
+        name: "Cold Sake (Superior Junnmai Gingo)",
+        desc: "",
         price: "6.95",
       },
       {
         num: 159,
-        name: "Cocktail General",
-        desc: "General cocktail",
-        price: "6.00",
+        name: "Warm Sake (serve in Bottle)",
+        desc: "",
+        price: "6.95",
       },
       {
         num: 160,
-        name: "Double Cocktail",
-        desc: "Double cocktail",
-        price: "10.00",
+        name: "Cocktail General",
+        desc: "",
+        price: "6.00",
       },
       {
         num: 161,
-        name: "Cocktail Special",
-        desc: "Special cocktail",
-        price: "8.50",
+        name: "Double Cocktail",
+        desc: "",
+        price: "10.00",
       },
       {
         num: 162,
+        name: "Cocktail Special",
+        desc: "",
+        price: "8.50",
+      },
+      {
+        num: 163,
         name: "Wine",
         desc: "Wine",
         price: "5.50",
+        noLetterPrefix: true,
+        variants: [
+          {
+            option: "Red Wine (Merlot or Cabernet)",
+          },
+          {
+            option:
+              "White Wine (Charonnay, Riesling, Sauvignon Blanc, Choya Plum Wine, Pinot Grigio",
+          },
+        ],
       },
     ],
   },
 
   desserts: {
     title: "Desserts",
-    description: "Sweet treats to finish your meal",
     items: [
       {
         num: 163,
         name: "Organic Ice Cream",
-        desc: "Organic ice cream",
+        desc: "French Vanilla or Chocolate or Strawberry.",
         price: "2.95",
       },
       {
         num: 164,
         name: "Flan",
-        desc: "Vietnamese caramel custard",
+        desc: "",
         price: "4.95",
       },
       {
         num: 165,
         name: "Cheesecake or Tiramisu Sponge Cake",
-        desc: "Cheesecake or tiramisu sponge cake",
+        desc: "Strawberry or LEmon or New York Style",
         price: "3.95",
       },
       {
         num: 166,
         name: "Sweet Sticky Rice with Mango or Avocado",
-        desc: "Sweet sticky rice with mango or avocado",
+        desc: "Deliciously sweet rice and mango",
         price: "5.95",
       },
     ],
