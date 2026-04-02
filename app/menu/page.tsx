@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { getConnection } from "@/app/lib/db";
 
+export const dynamic = "force-dynamic";
+
 type Variant = { option: string; price?: string };
 type Item = {
   id: number;
