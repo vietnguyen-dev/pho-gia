@@ -3,14 +3,18 @@ import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
 const s3 = new S3Client({ region: "us-west-2" });
 
+let cachedCACert: string | null = null;
+
 async function getCACert(): Promise<string> {
+  if (cachedCACert) return cachedCACert;
   const response = await s3.send(
     new GetObjectCommand({
       Bucket: process.env.AWS_S3_BUCKET,
       Key: process.env.AWS_S3_CA_CERT_KEY,
     })
   );
-  return response.Body!.transformToString();
+  cachedCACert = await response.Body!.transformToString();
+  return cachedCACert;
 }
 
 export async function getConnection() {
