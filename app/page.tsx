@@ -177,8 +177,10 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
-                <p className="text-4xl font-bold text-brand">3 Days</p>
-                <p className="text-stone-600">Of slow-simmered broth</p>
+                <p className="text-3xl font-bold text-brand leading-tight">
+                  Quality
+                </p>
+                <p className="text-stone-600">Slow-simmered broth</p>
               </div>
             </div>
           </div>

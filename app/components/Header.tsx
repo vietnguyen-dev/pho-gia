@@ -56,7 +56,7 @@ export default function Header() {
               FAQ
             </Link>
             <a
-              href="tel:+15035551234"
+              href="tel:+15033035442"
               className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium"
             >
               Order Now
@@ -121,7 +121,7 @@ export default function Header() {
               FAQ
             </Link>
             <a
-              href="tel:+15035551234"
+              href="tel:+15033035442"
               className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium text-center"
             >
               Order Now

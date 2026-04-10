@@ -33,11 +33,11 @@ const faqs = [
     questions: [
       {
         q: "Do you take reservations?",
-        a: "We operate on a first-come, first-served basis for parties under 6. For larger groups, please call ahead at (503) 555-1234 to arrange seating.",
+        a: "We operate on a first-come, first-served basis for parties under 6. For larger groups, please call ahead at (503) 303-5442 to arrange seating.",
       },
       {
         q: "Can I order online for pickup?",
-        a: "Yes! You can call us at (503) 555-1234 to place a pickup order. We recommend calling 20-30 minutes before you plan to arrive.",
+        a: "Yes! You can call us at (503) 303-5442 to place a pickup order. We recommend calling 20-30 minutes before you plan to arrive.",
       },
       {
         q: "Do you offer delivery?",
@@ -66,7 +66,7 @@ const faqs = [
       },
       {
         q: "Do you accommodate large groups?",
-        a: "Yes! For parties of 6 or more, please call ahead at (503) 555-1234 so we can prepare seating for your group.",
+        a: "Yes! For parties of 6 or more, please call ahead at (503) 303-5442 so we can prepare seating for your group.",
       },
       {
         q: "Is the restaurant family-friendly?",
@@ -175,10 +175,10 @@ export default function FAQPage() {
               We're happy to help! Reach out to us directly.
             </p>
             <a
-              href="tel:+15035551234"
+              href="tel:+15033035442"
               className="inline-block bg-white text-[#6a3940] px-8 py-3 rounded-full font-medium hover:bg-stone-100 transition-colors"
             >
-              Call (503) 555-1234
+              Call (503) 303-5442
             </a>
           </div>
         </div>
