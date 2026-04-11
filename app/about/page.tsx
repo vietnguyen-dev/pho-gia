@@ -39,7 +39,7 @@ export default function AboutPage() {
             </p>
             <p className="text-stone-600 leading-relaxed mb-6">
               Great pho requires patience: bones roasted until golden, spices
-              toasted to release their oils, and broth simmered for 3 full days.
+              toasted to release their oils, and broth simmered with care.
               These traditions, passed down through generations, remain at the
               heart of everything we do.
             </p>
@@ -113,8 +113,8 @@ export default function AboutPage() {
               </h2>
               <p className="text-stone-600 leading-relaxed mb-6">
                 Our pho broth is the foundation of everything we do. Our kitchen
-                runs around the clock as we tend to broth that simmers for 3 full
-                days to create the deepest, richest flavor possible.
+                runs around the clock as we tend to broth that simmers to create
+                the deepest, richest flavor possible.
               </p>
               <p className="text-stone-600 leading-relaxed mb-6">
                 We start with beef bones that are roasted until caramelized, then
@@ -123,9 +123,9 @@ export default function AboutPage() {
                 oils before joining the pot.
               </p>
               <p className="text-stone-600 leading-relaxed">
-                Over 3 days the broth simmers low and slow, never boiling,
-                developing layers of flavor that simply cannot be rushed. This
-                dedication to craft is what makes every bowl of Pho Gia special.
+                The broth simmers low and slow, never boiling, developing
+                layers of flavor that simply cannot be rushed. This dedication
+                to craft is what makes every bowl of Pho Gia special.
               </p>
             </div>
             <div className="relative">
@@ -136,12 +136,6 @@ export default function AboutPage() {
                   fill
                   className="object-cover"
                 />
-              </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
-                <p className="text-3xl font-bold text-[#6a3940] leading-tight">
-                  Quality
-                </p>
-                <p className="text-stone-600">Slow-simmered broth</p>
               </div>
             </div>
           </div>

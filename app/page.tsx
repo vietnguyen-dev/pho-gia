@@ -176,12 +176,6 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-center">
-                <p className="text-3xl font-bold text-brand leading-tight">
-                  Quality
-                </p>
-                <p className="text-stone-600">Slow-simmered broth</p>
-              </div>
             </div>
           </div>
         </div>

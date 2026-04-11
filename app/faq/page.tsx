@@ -8,7 +8,7 @@ const faqs = [
     questions: [
       {
         q: "What is pho?",
-        a: "Pho is a traditional Vietnamese soup consisting of broth, rice noodles, herbs, and meat (usually beef or chicken). Our broth is simmered for over 12 hours to develop deep, complex flavors.",
+        a: "Pho is a traditional Vietnamese soup consisting of a quality broth, rice noodles, herbs, and meat (usually beef or chicken).",
       },
       {
         q: "Do you have vegetarian or vegan options?",
