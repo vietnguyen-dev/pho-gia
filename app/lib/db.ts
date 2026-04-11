@@ -1,19 +1,24 @@
 import mysql from "mysql2/promise";
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { GetParameterCommand, SSMClient } from "@aws-sdk/client-ssm";
 
-const s3 = new S3Client({ region: "us-west-2" });
+const ssm = new SSMClient({ region: process.env.AWS_REGION ?? "us-west-2" });
 
 let cachedCACert: string | null = null;
 
 async function getCACert(): Promise<string> {
   if (cachedCACert) return cachedCACert;
-  const response = await s3.send(
-    new GetObjectCommand({
-      Bucket: process.env.AWS_S3_BUCKET,
-      Key: process.env.AWS_S3_CA_CERT_KEY,
-    })
+  const response = await ssm.send(
+    new GetParameterCommand({
+      Name: process.env.AWS_SSM_CA_CERT_PARAMETER,
+      WithDecryption: true,
+    }),
   );
-  cachedCACert = await response.Body!.transformToString();
+
+  if (!response.Parameter?.Value) {
+    throw new Error("Missing CA certificate in AWS SSM Parameter Store");
+  }
+
+  cachedCACert = response.Parameter.Value;
   return cachedCACert;
 }
 

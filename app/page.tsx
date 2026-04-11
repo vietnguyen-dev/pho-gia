@@ -160,8 +160,8 @@ export default function Home() {
                 </p>
                 <p>
                   Located in the heart of Milwaukie, we invite you to experience
-                  a true taste of Vietnam. Whether you're a pho enthusiast or
-                  trying Vietnamese cuisine for the first time, we're here to
+                  a true taste of Vietnam. Whether you&apos;re a pho enthusiast or
+                  trying Vietnamese cuisine for the first time, we&apos;re here to
                   make you feel at home.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function Home() {
             Ready to Experience Authentic Pho?
           </h2>
           <p className="text-stone-600 text-xl mb-10 leading-relaxed">
-            Visit us today or call ahead for pickup. We can't wait to serve you.
+            Visit us today or call ahead for pickup. We can&apos;t wait to serve you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

@@ -172,7 +172,7 @@ export default function FAQPage() {
               Still have questions?
             </h3>
             <p className="text-white/80 mb-6">
-              We're happy to help! Reach out to us directly.
+              We&apos;re happy to help! Reach out to us directly.
             </p>
             <a
               href="tel:+15033035442"

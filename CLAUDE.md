@@ -32,7 +32,7 @@ npm run lint     # Run ESLint
 - `GET /api/items` — Returns all menu items from the `vw_items` database view
 - `GET /api/sections` — Returns all menu sections from the `vw_sections` database view
 
-**Database** — `app/lib/db.ts` exports `getConnection()` which creates a `mysql2/promise` connection with SSL. The SSL CA certificate is fetched from AWS S3 and cached in memory. Required DB and AWS credentials are configured via environment variables in `.env`.
+**Database** — `app/lib/db.ts` exports `getConnection()` which creates a `mysql2/promise` connection with SSL. The SSL CA certificate is fetched from AWS SSM Parameter Store and cached in memory. Required DB and AWS credentials are configured via environment variables in `.env`.
 
 **Styling** — Tailwind CSS v4 with `@theme` inline syntax. Brand color `#6a3940` (burgundy) is defined as a CSS custom property in `app/globals.css` and referenced throughout.
 

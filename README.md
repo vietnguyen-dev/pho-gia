@@ -4,7 +4,7 @@ Website for Pho Gia Milwaukie, a Vietnamese restaurant located in Milwaukie, Ore
 
 ## Development
 
-Built with [Next.js](https://nextjs.org) (App Router), TypeScript, React, and Tailwind CSS v4. Menu data is stored in a MySQL database and fetched at runtime via internal API routes. The database connection uses SSL with a CA certificate retrieved from AWS S3.
+Built with [Next.js](https://nextjs.org) (App Router), TypeScript, React, and Tailwind CSS v4. Menu data is stored in a MySQL database and fetched at runtime via internal API routes. The database connection uses SSL with a CA certificate retrieved from AWS Systems Manager Parameter Store.
 
 ### Getting Started
 
@@ -31,4 +31,4 @@ npm run lint     # Run ESLint
 - **Next.js 15** (App Router) with TypeScript
 - **Tailwind CSS v4**
 - **MySQL** via `mysql2/promise` with SSL
-- **AWS S3** for SSL certificate storage
+- **AWS SSM Parameter Store** for SSL certificate storage
