@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type Variant = { option: string; price?: string };
 type Item = {
@@ -15,10 +15,121 @@ type Item = {
 };
 type Section = { id: number; name: string; description: string | null };
 
-export default function MenuClient({ items, sections }: { items: Item[]; sections: Section[] }) {
-  const sectionDescriptions = new Map(sections.map((s) => [s.id, s.description]));
+export default function MenuClient() {
+  const [items, setItems] = useState<Item[]>([]);
+  const [sections, setSections] = useState<Section[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingNext, setIsLoadingNext] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loadedSectionIds, setLoadedSectionIds] = useState<Set<number>>(new Set());
+  const loadedSectionIdsRef = useRef<Set<number>>(new Set());
+  const fetchingSectionIdsRef = useRef<Set<number>>(new Set());
+  const isMountedRef = useRef(false);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const sectionDescriptions = useMemo(
+    () => new Map(sections.map((s) => [s.id, s.description])),
+    [sections]
+  );
   const [search, setSearch] = useState("");
   const [activeFilters, setActiveFilters] = useState<Set<number>>(new Set());
+
+  const loadSectionItems = useCallback(
+    async (sectionId: number, mode: "initial" | "next" = "next") => {
+      if (
+        loadedSectionIdsRef.current.has(sectionId) ||
+        fetchingSectionIdsRef.current.has(sectionId)
+      ) {
+        return;
+      }
+
+      fetchingSectionIdsRef.current.add(sectionId);
+
+      if (mode === "next") {
+        setIsLoadingNext(true);
+      }
+
+      try {
+        const response = await fetch(`/api/items?sectionId=${sectionId}`);
+
+        if (!response.ok) {
+          throw new Error("Unable to load section.");
+        }
+
+        const nextItems = (await response.json()) as Item[];
+
+        if (!isMountedRef.current) {
+          return;
+        }
+
+        setItems((currentItems) => {
+          const existingIds = new Set(currentItems.map((item) => item.id));
+          const uniqueItems = nextItems.filter((item) => !existingIds.has(item.id));
+          return [...currentItems, ...uniqueItems];
+        });
+
+        setLoadedSectionIds((currentSectionIds) => {
+          const nextSectionIds = new Set(currentSectionIds);
+          nextSectionIds.add(sectionId);
+          loadedSectionIdsRef.current = nextSectionIds;
+          return nextSectionIds;
+        });
+      } catch {
+        if (isMountedRef.current) {
+          setError("We could not load the menu. Please try again.");
+        }
+      } finally {
+        fetchingSectionIdsRef.current.delete(sectionId);
+
+        if (isMountedRef.current && mode === "next") {
+          setIsLoadingNext(false);
+        }
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    isMountedRef.current = true;
+
+    async function loadMenuSections() {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const response = await fetch("/api/sections");
+
+        if (!response.ok) {
+          throw new Error("Unable to load sections.");
+        }
+
+        const nextSections = (await response.json()) as Section[];
+
+        if (!isMountedRef.current) {
+          return;
+        }
+
+        setSections(nextSections);
+
+        if (nextSections[0]) {
+          await loadSectionItems(nextSections[0].id, "initial");
+        }
+      } catch {
+        if (isMountedRef.current) {
+          setError("We could not load the menu. Please try again.");
+        }
+      } finally {
+        if (isMountedRef.current) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadMenuSections();
+
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, [loadSectionItems]);
 
   const toggleFilter = (sectionId: number) => {
     setActiveFilters((prev) => {
@@ -30,6 +141,8 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
       }
       return next;
     });
+
+    loadSectionItems(sectionId);
   };
 
   const sectionMap = items.reduce<Map<number, { name: string; items: Item[] }>>(
@@ -43,10 +156,17 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
     new Map()
   );
 
-  const filteredSections = Array.from(sectionMap.entries())
-    .filter(([id]) => activeFilters.size === 0 || activeFilters.has(id))
-    .map(([id, section]) => ({
-      id,
+  const loadedSections = sections
+    .filter((section) => loadedSectionIds.has(section.id))
+    .map((section) => ({
+      id: section.id,
+      name: section.name,
+      items: sectionMap.get(section.id)?.items ?? [],
+    }));
+
+  const filteredSections = loadedSections
+    .filter((section) => activeFilters.size === 0 || activeFilters.has(section.id))
+    .map((section) => ({
       ...section,
       items: section.items.filter(
         (item) =>
@@ -55,6 +175,42 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
       ),
     }))
     .filter((section) => section.items.length > 0);
+
+  const nextSection = sections.find((section) => !loadedSectionIds.has(section.id));
+  const hasMoreSections = Boolean(nextSection);
+
+  useEffect(() => {
+    if (isLoading || error || !nextSection || !loadMoreRef.current) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          loadSectionItems(nextSection.id);
+        }
+      },
+      { rootMargin: "600px 0px" }
+    );
+
+    observer.observe(loadMoreRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [error, isLoading, loadSectionItems, nextSection]);
+
+  useEffect(() => {
+    if (!search.trim()) {
+      return;
+    }
+
+    sections
+      .filter((section) => !loadedSectionIds.has(section.id))
+      .forEach((section) => {
+        loadSectionItems(section.id);
+      });
+  }, [loadedSectionIds, loadSectionItems, search, sections]);
 
   const renderItem = (item: Item) => (
     <div key={item.id} className="py-4 border-b border-stone-100">
@@ -91,6 +247,46 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
       )}
     </div>
   );
+
+  if (isLoading) {
+    return (
+      <section className="py-16">
+        <div className="max-w-4xl lg:max-w-6xl mx-auto px-6">
+          <div className="space-y-10">
+            {[0, 1, 2].map((section) => (
+              <div key={section}>
+                <div className="h-8 w-48 bg-stone-100 rounded mb-6 animate-pulse" />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4">
+                  {[0, 1, 2, 3].map((item) => (
+                    <div key={item} className="py-4 border-b border-stone-100">
+                      <div className="h-5 w-3/4 bg-stone-100 rounded mb-3 animate-pulse" />
+                      <div className="h-4 w-5/6 bg-stone-100 rounded animate-pulse" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-16">
+        <div className="max-w-4xl lg:max-w-6xl mx-auto px-6 text-center">
+          <p className="text-stone-500 text-lg">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 text-brand font-medium hover:underline"
+          >
+            Reload menu
+          </button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -139,12 +335,12 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
 
           {/* Filter Buttons */}
           <div className="flex gap-2 overflow-x-auto pb-2">
-            {Array.from(sectionMap.entries()).map(([id, section]) => (
+            {sections.map((section) => (
               <button
-                key={id}
-                onClick={() => toggleFilter(id)}
+                key={section.id}
+                onClick={() => toggleFilter(section.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                  activeFilters.has(id)
+                  activeFilters.has(section.id)
                     ? "bg-brand text-white"
                     : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
@@ -191,7 +387,7 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
                 </div>
               );
             })
-          ) : (
+          ) : !hasMoreSections && !isLoadingNext ? (
             <div className="text-center py-16">
               <p className="text-stone-500 text-lg">
                 No dishes found matching your search.
@@ -205,6 +401,15 @@ export default function MenuClient({ items, sections }: { items: Item[]; section
               >
                 Clear filters
               </button>
+            </div>
+          ) : null}
+          {hasMoreSections && (
+            <div ref={loadMoreRef} className="py-8 text-center">
+              {isLoadingNext ? (
+                <p className="text-stone-500">Loading more dishes...</p>
+              ) : (
+                <span className="sr-only">Load more menu sections</span>
+              )}
             </div>
           )}
         </div>

@@ -1,39 +1,7 @@
 import Image from "next/image";
-import { getConnection } from "@/app/lib/db";
 import MenuClient from "./menu-client";
 
-export const dynamic = "force-dynamic";
-
-type Variant = { option: string; price?: string };
-type Item = {
-  id: number;
-  name: string;
-  menu_position: number;
-  section_id: number;
-  section_name: string;
-  description: string | null;
-  price: string | null;
-  variants: Variant[] | null;
-};
-type Section = { id: number; name: string; description: string | null };
-
-async function getItems(): Promise<Item[]> {
-  const connection = await getConnection();
-  const [rows] = await connection.execute("SELECT * FROM vw_items ORDER BY section_id, menu_position;");
-  await connection.end();
-  return rows as Item[];
-}
-
-async function getSections(): Promise<Section[]> {
-  const connection = await getConnection();
-  const [rows] = await connection.execute("SELECT * FROM vw_sections;");
-  await connection.end();
-  return rows as Section[];
-}
-
-export default async function MenuPage() {
-  const [items, sections] = await Promise.all([getItems(), getSections()]);
-
+export default function MenuPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero with Image */}
@@ -56,7 +24,7 @@ export default async function MenuPage() {
         </div>
       </section>
 
-      <MenuClient items={items} sections={sections} />
+      <MenuClient />
     </div>
   );
 }
