@@ -193,15 +193,17 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+15033035442"
-              className="bg-brand text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-brand-light transition-colors"
+              className="border-2 border-brand text-brand px-8 py-4 rounded-full text-lg font-medium hover:bg-brand/5 transition-colors"
             >
-              Call (503) 303-5442
+              Order Now
             </a>
             <a
-              href="#contact"
-              className="border-2 border-stone-300 text-stone-700 px-8 py-4 rounded-full text-lg font-medium hover:border-brand hover:text-brand transition-colors"
+              href="https://www.order.store/store/pho-gia-4607-southeast-boardman-ave/Jm1e7NmnVUyQ3znhMfqC_A"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-brand-light transition-colors"
             >
-              Get Directions
+              Order Online
             </a>
           </div>
         </div>

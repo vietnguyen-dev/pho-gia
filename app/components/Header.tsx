@@ -55,12 +55,22 @@ export default function Header() {
             >
               FAQ
             </Link>
-            <a
-              href="tel:+15033035442"
-              className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium"
-            >
-              Order Now
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="tel:+15033035442"
+                className="border border-brand text-brand px-5 py-2 rounded-full hover:bg-brand/5 transition-colors font-medium"
+              >
+                Order Now
+              </a>
+              <a
+                href="https://www.order.store/store/pho-gia-4607-southeast-boardman-ave/Jm1e7NmnVUyQ3znhMfqC_A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium"
+              >
+                Order Online
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,12 +130,22 @@ export default function Header() {
             >
               FAQ
             </Link>
-            <a
-              href="tel:+15033035442"
-              className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium text-center"
-            >
-              Order Now
-            </a>
+            <div className="flex flex-col gap-3 pt-2">
+              <a
+                href="tel:+15033035442"
+                className="border border-brand text-brand px-5 py-2 rounded-full hover:bg-brand/5 transition-colors font-medium text-center"
+              >
+                Order Now
+              </a>
+              <a
+                href="https://www.order.store/store/pho-gia-4607-southeast-boardman-ave/Jm1e7NmnVUyQ3znhMfqC_A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand text-white px-5 py-2 rounded-full hover:bg-brand-light transition-colors font-medium text-center"
+              >
+                Order Online
+              </a>
+            </div>
           </div>
         )}
       </nav>
