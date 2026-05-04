@@ -54,7 +54,7 @@ const faqs = [
     questions: [
       {
         q: "What are your hours?",
-        a: "Monday - Thursday: 11am - 9pm, Friday - Saturday: 11am - 10pm, Sunday: 12pm - 8pm. Hours may vary on holidays.",
+        a: "Daily 11 AM - 9PM. Closed Wednesdays. Hours may vary on holidays.",
       },
       {
         q: "Where are you located?",
@@ -156,11 +156,7 @@ export default function FAQPage() {
               </h2>
               <div className="bg-stone-50 rounded-2xl px-6">
                 {section.questions.map((faq, faqIndex) => (
-                  <FAQItem
-                    key={faqIndex}
-                    question={faq.q}
-                    answer={faq.a}
-                  />
+                  <FAQItem key={faqIndex} question={faq.q} answer={faq.a} />
                 ))}
               </div>
             </div>

@@ -22,14 +22,16 @@ export default function MenuPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingNext, setIsLoadingNext] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loadedSectionIds, setLoadedSectionIds] = useState<Set<number>>(new Set());
+  const [loadedSectionIds, setLoadedSectionIds] = useState<Set<number>>(
+    new Set(),
+  );
   const loadedSectionIdsRef = useRef<Set<number>>(new Set());
   const fetchingSectionIdsRef = useRef<Set<number>>(new Set());
   const isMountedRef = useRef(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const sectionDescriptions = useMemo(
     () => new Map(sections.map((s) => [s.id, s.description])),
-    [sections]
+    [sections],
   );
   const [search, setSearch] = useState("");
   const [activeFilters, setActiveFilters] = useState<Set<number>>(new Set());
@@ -64,7 +66,9 @@ export default function MenuPage() {
 
         setItems((currentItems) => {
           const existingIds = new Set(currentItems.map((item) => item.id));
-          const uniqueItems = nextItems.filter((item) => !existingIds.has(item.id));
+          const uniqueItems = nextItems.filter(
+            (item) => !existingIds.has(item.id),
+          );
           return [...currentItems, ...uniqueItems];
         });
 
@@ -86,7 +90,7 @@ export default function MenuPage() {
         }
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -154,7 +158,7 @@ export default function MenuPage() {
       map.get(item.section_id)!.items.push(item);
       return map;
     },
-    new Map()
+    new Map(),
   );
 
   const loadedSections = sections
@@ -166,18 +170,22 @@ export default function MenuPage() {
     }));
 
   const filteredSections = loadedSections
-    .filter((section) => activeFilters.size === 0 || activeFilters.has(section.id))
+    .filter(
+      (section) => activeFilters.size === 0 || activeFilters.has(section.id),
+    )
     .map((section) => ({
       ...section,
       items: section.items.filter(
         (item) =>
           item.name.toLowerCase().includes(search.toLowerCase()) ||
-          (item.description ?? "").toLowerCase().includes(search.toLowerCase())
+          (item.description ?? "").toLowerCase().includes(search.toLowerCase()),
       ),
     }))
     .filter((section) => section.items.length > 0);
 
-  const nextSection = sections.find((section) => !loadedSectionIds.has(section.id));
+  const nextSection = sections.find(
+    (section) => !loadedSectionIds.has(section.id),
+  );
   const hasMoreSections = Boolean(nextSection);
 
   useEffect(() => {
@@ -191,7 +199,7 @@ export default function MenuPage() {
           loadSectionItems(nextSection.id);
         }
       },
-      { rootMargin: "600px 0px" }
+      { rootMargin: "600px 0px" },
     );
 
     observer.observe(loadMoreRef.current);
@@ -225,7 +233,9 @@ export default function MenuPage() {
             <p className="text-stone-500 text-sm mt-1">{item.description}</p>
           )}
         </div>
-        {item.price && <p className="text-brand font-semibold">${item.price}</p>}
+        {item.price && (
+          <p className="text-brand font-semibold">${item.price}</p>
+        )}
       </div>
       {item.variants && (
         <div className="mt-2 ml-6 space-y-1">
@@ -303,7 +313,8 @@ export default function MenuPage() {
           </p>
           <h1 className="text-5xl font-bold text-white mb-4">Our Menu</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Authentic Vietnamese dishes made fresh daily with traditional recipes
+            Authentic Vietnamese dishes made fresh daily with traditional
+            recipes
           </p>
         </div>
       </section>
@@ -390,7 +401,9 @@ export default function MenuPage() {
                       {section.name}
                     </h2>
                     {sectionDescriptions.get(section.id) && (
-                      <p className="text-stone-500">{sectionDescriptions.get(section.id)}</p>
+                      <p className="text-stone-500">
+                        {sectionDescriptions.get(section.id)}
+                      </p>
                     )}
                     <div className="w-16 h-1 bg-brand mt-4" />
                   </div>
