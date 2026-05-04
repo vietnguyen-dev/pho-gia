@@ -79,7 +79,7 @@ const faqs = [
     questions: [
       {
         q: "What makes your pho special?",
-        a: "Our pho broth is made from a family recipe passed down through three generations. We simmer beef bones, charred onions, ginger, and spices for over 12 hours to create a rich, aromatic broth.",
+        a: "Our pho broth is made from a family recipe passed down through three generations. We simmer beef bones, charred onions, ginger, and spices to create a rich, aromatic broth.",
       },
       {
         q: "Do you use MSG?",
