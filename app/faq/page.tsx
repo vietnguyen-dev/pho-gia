@@ -54,7 +54,7 @@ const faqs = [
     questions: [
       {
         q: "What are your hours?",
-        a: "Daily 11 AM - 9PM. Closed Wednesdays. Hours may vary on holidays.",
+        a: "Thursday - Tuesday 11 AM - 10 PM. Closed every Wednesday. Hours may vary on holidays.",
       },
       {
         q: "Where are you located?",
