@@ -82,10 +82,6 @@ const faqs = [
         a: "Our pho broth is made from a family recipe passed down through three generations. We simmer beef bones, charred onions, ginger, and spices to create a rich, aromatic broth.",
       },
       {
-        q: "Do you use MSG?",
-        a: "We do not add MSG to our dishes. Our flavors come from slow-simmered broths, fresh herbs, and quality ingredients.",
-      },
-      {
         q: "Where do you source your ingredients?",
         a: "We source fresh produce from local farms whenever possible and use high-quality meats. Our herbs are delivered fresh multiple times per week.",
       },
