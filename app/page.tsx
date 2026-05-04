@@ -16,9 +16,9 @@ const featuredDishes = [
     icon: "🥢",
   },
   {
-    name: "Banh Mi Dac Biet",
+    name: "Banh Mi",
     description: "Special combo sandwich with pate, ham, and fresh vegetables",
-    price: "$9.95",
+    price: "$8.00",
     icon: "🥖",
   },
 ];
@@ -156,9 +156,8 @@ export default function Home() {
                 </p>
                 <p>
                   We believe in using only the freshest ingredients. Our broth
-                  simmers for 3 full days to achieve that perfect depth of
-                  flavor. Every herb, every spice, every ingredient is carefully
-                  selected.
+                  simmers to achieve that perfect depth of flavor. Every herb,
+                  every spice, every ingredient is carefully selected.
                 </p>
                 <p>
                   Located in the heart of Milwaukie, we invite you to experience
