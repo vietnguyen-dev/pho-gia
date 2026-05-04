@@ -54,7 +54,7 @@ const faqs = [
     questions: [
       {
         q: "What are your hours?",
-        a: "Thursday - Tuesday 11 AM - 10 PM. Closed every Wednesday. Hours may vary on holidays.",
+        a: "Thursday - Tuesday 11 AM - 9 PM. Closed every Wednesday. Hours may vary on holidays.",
       },
       {
         q: "Where are you located?",
@@ -62,7 +62,7 @@ const faqs = [
       },
       {
         q: "Is there parking available?",
-        a: "Yes, we have a free parking lot adjacent to the restaurant, and street parking is also available on Main Street.",
+        a: "Yes, we have a free parking lot at the restaurant, and street parking is also available.",
       },
       {
         q: "Do you accommodate large groups?",
