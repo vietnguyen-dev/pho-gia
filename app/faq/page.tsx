@@ -58,7 +58,7 @@ const faqs = [
       },
       {
         q: "Where are you located?",
-        a: "We're located at 10000 SE Main Street, Milwaukie, OR 97222. There's free parking available in our lot and on the street.",
+        a: "We're located at 4607 Boardman Ave , Milwaukie, OR 97626. There's free parking available in our lot and on the street.",
       },
       {
         q: "Is there parking available?",
